@@ -3,18 +3,14 @@
         "염수경": "https://bepolar.tistory.com/rss",
         "박지윤": "https://codeitharder.tistory.com/rss",
         "윤여원": "https://aidenyoun.tistory.com/rss",
-        "윤철중": "https://yoon-coding.tistory.com/rss",
         "박준규": "https://sinbakhae.tistory.com/rss",
         "김헌진": "https://flymogi.tistory.com/rss",
         "이예섭": "https://seoplee.tistory.com/rss",
         "박진영": "https://steady-coding.tistory.com/rss",
-        "조은지": "https://sijak-half.tistory.com/rss",
-        "김수민": "https://tnrn211.tistory.com/rss",
         "송준영": "https://algosketch.tistory.com/rss",
         "이지연": "https://jygrace.tistory.com/rss",
         "김수현": "https://suhyun72.tistory.com/rss",
         "전경민t": "https://seoulsky.tistory.com/rss",
-        "홍석현": "https://hcoding.tistory.com/rss",
         "김연지": "https://truebliss.tistory.com/rss",
         "배준호": "https://dizlet.tistory.com/rss",
         "김혜린": "https://k1h2fls.tistory.com/rss",
@@ -25,7 +21,6 @@
         "박예지": "https://v2.velog.io/rss/@yeji9784",
         "조은정v": "https://v2.velog.io/rss/@aza425",
         "정은경": "https://v2.velog.io/rss/@im_lily",
-        "심선우v": "https://v2.velog.io/rss/@sws121",
         "손영인": "https://v2.velog.io/rss/@broccolism"
     },
     "git": {
@@ -33,7 +28,6 @@
     },
     "naver": {
         "전경민n": "http://blog.rss.naver.com/jgk09049.xml",
-        "조은정n": "http://blog.rss.naver.com/aza425.xml",
-        "심선우n": "http://blog.rss.naver.com/021210ss.xml"
+        "조은정n": "http://blog.rss.naver.com/aza425.xml"
     }
 }

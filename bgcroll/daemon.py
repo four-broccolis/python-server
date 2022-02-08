@@ -2,6 +2,8 @@ import json
 import pymysql
 import feedparser
 from datetime import datetime
+from des import des
+
 
 # Tistory, Velog, Naver
 def getdate(e):
@@ -43,11 +45,11 @@ for platform in platforms:
     for key in keys:
         name = key
         url = platform[name]
-        query = "SELECT * FROM post where name=%s order by published desc"
+        query = "SELECT * FROM post_des where name=%s order by published desc"
         cursor.execute(query, name)
         result = cursor.fetchone()
         if result:
-            recent[name] = result[4]
+            recent[name] = result[5]
 
 print("")
 
@@ -85,12 +87,21 @@ while True:
                         for e in d.entries:
                             title = e.title
                             link = e.link
+                            description = des(e)
                             if now == "Git":
                                 date = getdate_git(e)
                             else:
                                 date = getdate(e)
                             if recent[name] < date <= recentdate:
-                                thisdata = (name, title, link, date, mytopic, now)
+                                thisdata = (
+                                    name,
+                                    title,
+                                    description,
+                                    link,
+                                    date,
+                                    mytopic,
+                                    now,
+                                )
                                 data.append(thisdata)
                             else:
                                 break
@@ -101,7 +112,7 @@ while True:
                             + str(len(data))
                             + "개 있습니다! DB에 반영합니다."
                         )
-                        query = "INSERT INTO post (id, name, title, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s)"
+                        query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
                         cursor.executemany(query, data)
                         conn.commit()
                         recent[name] = recentdate
@@ -113,16 +124,17 @@ while True:
                     for e in d.entries:
                         title = e.title
                         link = e.link
+                        description = des(e)
                         if now == "Git":
                             date = getdate_git(e)
                         else:
                             date = getdate(e)
-                        thisdata = (name, title, link, date, mytopic, now)
+                        thisdata = (name, title, description, link, date, mytopic, now)
                         data.append(thisdata)
                     print(
                         "🎉 " + name + "님의 첫 글이 " + str(len(data)) + "개 있습니다! DB에 반영합니다."
                     )
-                    query = "INSERT INTO post (id, name, title, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s)"
+                    query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
                     cursor.executemany(query, data)
                     conn.commit()
                     recent[name] = recentdate  # recent에 새로운 키-값 생성
@@ -132,5 +144,5 @@ while True:
                     anypost = d.entries[0]  # 게시글 존재 여부 확인
                     print("❗ 에러가 발생했습니다. [" + e + "]")
                 except:
-                    print("❗ " + name + "님은 아무 포스팅도 게시하지 않았습니다.")
+                    print("❗ " + name + "님은 포스팅을 시작하지 않았습니다.")
                 continue

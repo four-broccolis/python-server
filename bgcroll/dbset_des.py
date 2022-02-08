@@ -2,6 +2,7 @@ import json
 import pymysql
 import feedparser
 from datetime import datetime
+from des import des
 
 
 f = open("info.json", "r", encoding="UTF-8")
@@ -30,11 +31,12 @@ def croll_type1(platform, topic, platname):
         for e in d.entries:
             title = e.title
             link = e.link
+            description = des(e)
             date = e.published.split(" ")
             date = date[1] + " " + date[2] + " " + date[3] + " " + date[4]
             date = datetime.strptime(date, "%d %b %Y %H:%M:%S")
-            data = (name, title, link, date, mytopic, platname)
-            query = "INSERT INTO post (id, name, title, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s)"
+            data = (name, title, description, link, date, mytopic, platname)
+            query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
             cursor.execute(query, data)
             conn.commit()
 
@@ -49,11 +51,12 @@ def croll_type2(platform, topic, platname):
         for e in d.entries:
             title = e.title
             link = e.link
+            description = des(e)
             date = e.published.split("+")
             date = date[0]
             date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
-            data = (name, title, link, date, mytopic, platname)
-            query = "INSERT INTO post (id, name, title, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s)"
+            data = (name, title, description, link, date, mytopic, platname)
+            query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
             cursor.execute(query, data)
             conn.commit()
 
