@@ -1,6 +1,5 @@
 {
     "tistory": {
-        "염수경": "https://bepolar.tistory.com/rss",
         "박지윤": "https://codeitharder.tistory.com/rss",
         "윤여원": "https://aidenyoun.tistory.com/rss",
         "박준규": "https://sinbakhae.tistory.com/rss",
@@ -15,19 +14,32 @@
         "배준호": "https://dizlet.tistory.com/rss",
         "김혜린": "https://k1h2fls.tistory.com/rss",
         "한채연": "https://chae528.tistory.com/rss",
-        "이재영": "https://2jaebbang.tistory.com/rss"
+        "이재영": "https://2jaebbang.tistory.com/rss",
+        "이선민": "https://sunminyz.tistory.com/rss",
+        "임유나": "https://unana.tistory.com/rss",
+        "이연우": "https://cocoomoo.tistory.com/rss",
+        "전영인": "https://youngyin.tistory.com/rss",
+        "장연지": "https://kitez.tistory.com/rss",
+        "김지현": "https://newtoner.tistory.com/rss",
+        "김현수": "https://hyunsooworld.tistory.com/rss"
     },
     "velog": {
         "박예지": "https://v2.velog.io/rss/@yeji9784",
         "조은정v": "https://v2.velog.io/rss/@aza425",
         "정은경": "https://v2.velog.io/rss/@im_lily",
-        "손영인": "https://v2.velog.io/rss/@broccolism"
+        "손영인": "https://v2.velog.io/rss/@broccolism",
+        "김선호": "https://v2.velog.io/rss/@balparang"
     },
     "git": {
-        "최문형": "https://alirz-pixel.github.io/feed.xml"
+        "최문형": "https://alirz-pixel.github.io/feed.xml",
+        "김명관": "https://greatlaboratory.dev/feed.xml",
+        "염수경": "https://sookyeongyeom.github.io/feed.xml"
     },
     "naver": {
         "전경민n": "http://blog.rss.naver.com/jgk09049.xml",
         "조은정n": "http://blog.rss.naver.com/aza425.xml"
+    },
+    "blogspot": {
+        "신기열": "https://keykat7.blogspot.com/feeds/posts/default?alt=rss"
     }
 }

@@ -5,7 +5,7 @@ from datetime import datetime
 from des import des
 
 
-# Tistory, Velog, Naver
+# Tistory, Velog, Naver, Blogspot
 def getdate(e):
     date = e.published.split(" ")
     date = date[1] + " " + date[2] + " " + date[3] + " " + date[4]
@@ -30,7 +30,7 @@ cursor = conn.cursor()
 # Info 가져오기
 f = open("info.json", "r", encoding="UTF-8")
 info = json.load(f)
-platforms = ["tistory", "velog", "naver", "git"]
+platforms = ["tistory", "velog", "naver", "git", "blogspot"]
 
 # Topic 가져오기
 f = open("topic.json", "r", encoding="UTF-8")
@@ -87,7 +87,7 @@ while True:
                         for e in d.entries:
                             title = e.title
                             link = e.link
-                            description = des(e)
+                            description = des(name, e)
                             if now == "Git":
                                 date = getdate_git(e)
                             else:
@@ -121,6 +121,7 @@ while True:
 
                 else:  # 초기세팅 시 DB에 첫 글이 없었을 경우
                     recentdate = date
+                    data = []
                     for e in d.entries:
                         title = e.title
                         link = e.link

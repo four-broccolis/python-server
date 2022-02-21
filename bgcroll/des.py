@@ -2,8 +2,12 @@ import feedparser
 import re
 
 
-def des(e):
-    des = e.description
+def des(name, e):
+
+    if name == "염수경":
+        des = e.content[1]["value"]
+    else:
+        des = e.description
 
     targets = [
         "<.+?>",
