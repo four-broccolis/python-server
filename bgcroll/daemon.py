@@ -143,7 +143,7 @@ while True:
             except Exception as e:  # 대부분 아무 글도 없는 경우 에러 발생
                 try:
                     anypost = d.entries[0]  # 게시글 존재 여부 확인
-                    print("❗ 에러가 발생했습니다. [" + str(e) + "]")
+                    print(e)
                 except:
                     print("❗ " + name + "님은 포스팅을 시작하지 않았습니다.")
                 continue
