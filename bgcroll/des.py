@@ -28,7 +28,7 @@ def des(name, e):
     des = re.sub(" +", " ", des, 0).strip()
     des = re.sub("&#39;{0,1}", "", des, 0).strip()
 
-    des = des[:100]
+    des = des[:150]
 
     return des
 
