@@ -51,6 +51,9 @@ for platform in platforms:
         if result:
             recent[name] = result[5]
 
+# DB 해제
+conn.close()
+
 print("")
 
 # 실시간 비교
@@ -105,16 +108,22 @@ while True:
                                 data.append(thisdata)
                             else:
                                 break
-                        print(
-                            "💡 "
-                            + name
-                            + "님의 최신 글이 "
-                            + str(len(data))
-                            + "개 있습니다! DB에 반영합니다."
+                        print("💡 " + name + "님의 최신 글이 " + str(len(data)) + "개 있습니다!")
+                        # DB 재연결
+                        conn = pymysql.connect(
+                            user="sky",
+                            passwd="7173",
+                            host="127.0.0.1",
+                            db="rss",
+                            charset="utf8",
                         )
+                        cursor = conn.cursor()
                         query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
                         cursor.executemany(query, data)
                         conn.commit()
+                        print("🎉 " + name + "님의 최신 정보를 DB에 반영했습니다.")
+                        # DB 해제
+                        conn.close()
                         recent[name] = recentdate
                     else:
                         pass  # 기존 게시글이 삭제된 경우 (RSS 피드에는 삭제 내역이 반영되지 않으므로 발생하지 않음)
@@ -125,19 +134,28 @@ while True:
                     for e in d.entries:
                         title = e.title
                         link = e.link
-                        description = des(e)
+                        description = des(name, e)
                         if now == "Git":
                             date = getdate_git(e)
                         else:
                             date = getdate(e)
                         thisdata = (name, title, description, link, date, mytopic, now)
                         data.append(thisdata)
-                    print(
-                        "🎉 " + name + "님의 첫 글이 " + str(len(data)) + "개 있습니다! DB에 반영합니다."
+                    print("🎉 " + name + "님의 첫 글이 " + str(len(data)) + "개 있습니다!")
+                    # DB 재연결
+                    conn = pymysql.connect(
+                        user="sky",
+                        passwd="7173",
+                        host="127.0.0.1",
+                        db="rss",
+                        charset="utf8",
                     )
                     query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
                     cursor.executemany(query, data)
                     conn.commit()
+                    print("🎉 " + name + "님의 최신 정보를 DB에 반영했습니다.")
+                    # DB 해제
+                    conn.close()
                     recent[name] = recentdate  # recent에 새로운 키-값 생성
 
             except Exception as e:  # 대부분 아무 글도 없는 경우 에러 발생
