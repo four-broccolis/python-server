@@ -2,12 +2,9 @@ import feedparser
 import re
 
 
-def des(name, e):
+def des(e):
 
-    if name == "염수경":
-        des = e.content[1]["value"]
-    else:
-        des = e.description
+    des = e.description
 
     targets = [
         "<.+?>",
@@ -34,7 +31,7 @@ def des(name, e):
 
 
 if __name__ == "__main__":
-    url = "https://v2.velog.io/rss/@broccolism"
+    url = "https://sookyeongyeom.github.io/feed.xml"
 
     d = feedparser.parse(url)
 

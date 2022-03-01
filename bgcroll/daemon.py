@@ -76,7 +76,9 @@ while True:
             d = feedparser.parse(url)
             try:
                 e = d.entries[0]  # 현재 블로그에 게시된 게시글 중 가장 최신 글
-                if now == "Git":
+                if name == "염수경":
+                    date = getdate(e)
+                elif now == "Git":
                     date = getdate_git(e)
                 else:
                     date = getdate(e)
@@ -90,8 +92,10 @@ while True:
                         for e in d.entries:
                             title = e.title
                             link = e.link
-                            description = des(name, e)
-                            if now == "Git":
+                            description = des(e)
+                            if name == "염수경":
+                                date = getdate(e)
+                            elif now == "Git":
                                 date = getdate_git(e)
                             else:
                                 date = getdate(e)
@@ -134,8 +138,10 @@ while True:
                     for e in d.entries:
                         title = e.title
                         link = e.link
-                        description = des(name, e)
-                        if now == "Git":
+                        description = des(e)
+                        if name == "염수경":
+                            date = getdate(e)
+                        elif now == "Git":
                             date = getdate_git(e)
                         else:
                             date = getdate(e)
@@ -161,7 +167,7 @@ while True:
             except Exception as e:  # 대부분 아무 글도 없는 경우 에러 발생
                 try:
                     anypost = d.entries[0]  # 게시글 존재 여부 확인
-                    print(e)
+                    print("❗ " + name + " : " + e)
                 except:
                     print("❗ " + name + "님은 포스팅을 시작하지 않았습니다.")
                 continue
