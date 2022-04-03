@@ -76,9 +76,7 @@ while True:
             d = feedparser.parse(url)
             try:
                 e = d.entries[0]  # 현재 블로그에 게시된 게시글 중 가장 최신 글
-                if name == "염수경":
-                    date = getdate(e)
-                elif now == "Git":
+                if now == "Git":
                     date = getdate_git(e)
                 else:
                     date = getdate(e)
@@ -93,9 +91,7 @@ while True:
                             title = e.title
                             link = e.link
                             description = des(e)
-                            if name == "염수경":
-                                date = getdate(e)
-                            elif now == "Git":
+                            if now == "Git":
                                 date = getdate_git(e)
                             else:
                                 date = getdate(e)
@@ -139,9 +135,7 @@ while True:
                         title = e.title
                         link = e.link
                         description = des(e)
-                        if name == "염수경":
-                            date = getdate(e)
-                        elif now == "Git":
+                        if now == "Git":
                             date = getdate_git(e)
                         else:
                             date = getdate(e)
@@ -156,6 +150,7 @@ while True:
                         db="rss",
                         charset="utf8",
                     )
+                    cursor = conn.cursor()
                     query = "INSERT INTO post_des (id, name, title, description, link, published, topic, platform) VALUE (0, %s, %s, %s, %s, %s, %s, %s)"
                     cursor.executemany(query, data)
                     conn.commit()

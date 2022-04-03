@@ -29,16 +29,15 @@
         "정은경": "https://v2.velog.io/rss/@im_lily",
         "손영인": "https://v2.velog.io/rss/@broccolism",
         "김선호": "https://v2.velog.io/rss/@balparang",
-        "박지윤v": "https://v2.velog.io/rss/@yoon-park"
+        "박지윤v": "https://v2.velog.io/rss/@yoon-park",
+        "염수경v": "https://v2.velog.io/rss/@sookyeongyeom"
     },
     "git": {
         "최문형": "https://alirz-pixel.github.io/feed.xml",
-        "김명관": "https://greatlaboratory.dev/feed.xml",
-        "염수경": "https://sookyeongyeom.github.io/feed.xml"
+        "김명관": "https://greatlaboratory.dev/feed.xml"
     },
     "naver": {
-        "전경민n": "http://blog.rss.naver.com/jgk09049.xml",
-        "조은정n": "http://blog.rss.naver.com/aza425.xml"
+        "전경민n": "http://blog.rss.naver.com/jgk09049.xml"
     },
     "blogspot": {
         "신기열": "https://keykat7.blogspot.com/feeds/posts/default?alt=rss"
